@@ -52,10 +52,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://www.github.com/tonysamperi/smp-logger"
+    "url": "https://www.github.com/tonysamperi/logger"
   },
   "bugs": {
-    "url": "https://github.com/tonysamperi/smp-logger/issues"
+    "url": "https://github.com/tonysamperi/logger/issues"
   },
   "license": "MIT",
   "devDependencies": {
