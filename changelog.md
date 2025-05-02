@@ -1,3 +1,6 @@
+# 2.0.1
+* Version bump
+
 # 2.0.0
 * Add ESM build
 
