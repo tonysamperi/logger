@@ -122,8 +122,14 @@ export class SmpLoggerService extends SmpLoggerMethods {
     }
 
     filterSensitiveData<T>(value: T): T {
-        if (value === null || typeof value !== "object" || Array.isArray(value) || value.constructor !== Object) {
+        if (value === null || typeof value !== "object") {
 
+            return value;
+        }
+        if (Array.isArray(value)) {
+            return value.map(item => this.filterSensitiveData(item)) as T;
+        }
+        if (value.constructor !== Object) {
             return value;
         }
         const filteredValue = {} as T;
