@@ -97,24 +97,36 @@ describe("SmpLoggerService", () => {
         const preprocessedArgs = logger.preprocessArgs("info", "foo", {
             base: "base-fubar",
             password: "abc123",
+            Authorization: "authorization-value",
+            toKen: "abc123",
             deep: {
                 nested: "nested-fubar",
                 password: "abc123",
+                authorization: "nested-authorization",
+                token: "nested-token",
                 deeper: {
                     deepest: "deepest-fubar",
-                    password: "abc123"
+                    pasSword: "abc123",
+                    authorization: "deepest-authorization",
+                    token: "deepest-token"
                 }
             }
         });
         const expected = {
             base: "base-fubar",
             password: "*****",
+            Authorization: "*****",
+            toKen: "*****",
             deep: {
                 nested: "nested-fubar",
                 password: "*****",
+                authorization: "*****",
+                token: "*****",
                 deeper: {
                     deepest: "deepest-fubar",
-                    password: "*****"
+                    pasSword: "*****",
+                    authorization: "*****",
+                    token: "*****"
                 }
             }
         };

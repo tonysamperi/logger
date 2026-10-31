@@ -1,3 +1,10 @@
+# 2.1.0
+* Make sensitive props check case-insensitive
+* Add more default sensitive props
+
+# 2.0.1
+* Version bump
+
 # 2.0.0
 * Add ESM build
 

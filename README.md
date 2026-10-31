@@ -1,6 +1,8 @@
-# smp-logger
+# logger
 
 A logger service that **standardizes** and **centralizes** logs across your applications.
+It allows you to create multiple **singleton** instances you can share across your applications.
+The singleton instance holds specific configuration, such as appName and tags, that helps you analyse the logs later.
 
 [![MIT Licence][licence-image]][licence]
 [![NPM version][npm-version-image]][npm-url]
