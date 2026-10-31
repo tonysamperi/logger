@@ -134,7 +134,7 @@ export class SmpLoggerService extends SmpLoggerMethods {
 
                 continue;
             }
-            if (this._sensitiveProps.includes(key)) {
+            if (this._sensitiveProps.some(p => p === key.toLowerCase())) {
                 (filteredValue as any)[key] = this._sensitivePropMask;
 
                 continue;
@@ -146,7 +146,6 @@ export class SmpLoggerService extends SmpLoggerMethods {
     }
 
     preprocessArgs(level: SmpGenericLoggerMethodKeys, ...args: any[]): any[] {
-        // eslint-disable-next-line prefer-spread
         return this._defaultPreprocessArgs.apply(this, [level, ...args]);
     }
 
@@ -186,7 +185,7 @@ export class SmpLoggerService extends SmpLoggerMethods {
                               enablePreprocessing = !1,
                               enableSessionId = !1
                           }: Partial<SmpLoggerConfig>) {
-        this._sensitiveProps = [...(sensitiveProps), ...["pwd", "password", "buffer", "token", "accessToken", "refreshToken"]];
+        this._sensitiveProps = [...(sensitiveProps), ...["pwd", "password", "buffer", "authorization", "token", "accessToken", "refreshToken"]].map(p => p.toLowerCase());
         this.preprocessArgs = enablePreprocessing ? this.preprocessArgs : this._noopPreprocessArgs;
         this._sessionId = enableSessionId ? this._sessionManager.sessionId : void 0;
         this._updateLevel(level);
