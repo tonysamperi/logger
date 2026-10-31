@@ -92,6 +92,27 @@ describe("SmpLoggerService", () => {
         }
     });
 
+    it("should filter sensitive data inside arrays", () => {
+        const logger = SmpLoggerService.init({
+            level: SmpLoggingLevels.DEBUG,
+            sensitiveProps: ["apikey"]
+        }, "arrayFiltering");
+        const input = {
+            nested: [{
+                APIKEY: "secret",
+                value: "visible"
+            }]
+        };
+
+        expect(logger.filterSensitiveData(input)).toEqual({
+            nested: [{
+                APIKEY: "*****",
+                value: "visible"
+            }]
+        });
+        expect(input.nested[0].APIKEY).toBe("secret");
+    });
+
     it("should not create metadata properties recursively w/ args", () => {
         const logger = SmpLoggerService.get(appNames.withPreprocessing);
         const preprocessedArgs = logger.preprocessArgs("info", "foo", {

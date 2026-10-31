@@ -1,3 +1,6 @@
+# 2.1.1
+* Fix recursion over nested arrays in _filterSensitiveData
+
 # 2.1.0
 * Make sensitive props check case-insensitive
 * Add more default sensitive props
